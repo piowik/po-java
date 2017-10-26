@@ -4,8 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-class JIn {
-    static String getString() {
+public class JIn {
+    public static String getString() {
         String text = null;
         try{
             InputStreamReader rd = new InputStreamReader(System.in);
@@ -16,8 +16,8 @@ class JIn {
         return text;
     }
 
-    static int getInteger() {
-         int integer = -1;
+    public static int getInteger() {
+        int integer = -1;
         try{
             InputStreamReader rd = new InputStreamReader(System.in);
             BufferedReader bfr = new BufferedReader(rd);
