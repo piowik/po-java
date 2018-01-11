@@ -77,10 +77,9 @@ class Server implements Runnable {
                             idList.add(id);
                             out.println(id);
                         } else {
-                            out.println("Zle haslo, Odleglosc " + String.valueOf(levenshtein(login,password)));
+                            out.println("Zle haslo, Odleglosc " + String.valueOf(levenshtein(login, password)));
                         }
-                    }
-                    else {
+                    } else {
                         out.println("Zly login");
                     }
                 }
@@ -163,25 +162,23 @@ class Server implements Runnable {
         f_len = first.length();
         s_len = second.length();
 
-        d = new int[f_len+1][s_len+1];
+        d = new int[f_len + 1][s_len + 1];
 
-        for (i=0; i<=f_len; i++)
+        for (i = 0; i <= f_len; i++)
             d[i][0] = i;
-        for (j=1; j<=s_len; j++)
+        for (j = 1; j <= s_len; j++)
             d[0][j] = j;
 
-        for (i=1; i<=f_len; i++)
-        {
-            for (j=1; j<=s_len; j++)
-            {
-                if (first.charAt(i-1) == second.charAt(j-1))
+        for (i = 1; i <= f_len; i++) {
+            for (j = 1; j <= s_len; j++) {
+                if (first.charAt(i - 1) == second.charAt(j - 1))
                     cost = 0;
                 else
                     cost = 1;
 
-                d[i][j] = Math.min(d[i-1][j] + 1,
-                        Math.min(d[i][j-1] + 1,
-                                d[i-1][j-1] + cost));
+                d[i][j] = Math.min(d[i - 1][j] + 1,
+                        Math.min(d[i][j - 1] + 1,
+                                d[i - 1][j - 1] + cost));
             }
         }
         return d[f_len][s_len];
